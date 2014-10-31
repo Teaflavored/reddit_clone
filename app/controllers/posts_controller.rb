@@ -43,7 +43,6 @@ class PostsController < ApplicationController
     render :show
   end
 
-  
   private
   
   def post_params

@@ -24,6 +24,7 @@
   <textarea name="post[content]"
             id="post_content"><%= post.content %></textarea>
   <br>
+  <input type="hidden" name="post[sub_ids][]" value="">
   
   <% subs.each do |sub| %>
     <label for="post_sub_<%= sub.title %>"><%= sub.title %></label>

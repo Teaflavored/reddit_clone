@@ -22,8 +22,7 @@ class Post < ActiveRecord::Base
     class_name: "Comment",
     foreign_key: :post_id,
     primary_key: :id
-
-    )
+  )
   
   has_many(
     :subs,
@@ -41,7 +40,7 @@ class Post < ActiveRecord::Base
   
   def comments_by_parent_id
     results = Hash.new([])
-    comments.each do |comment|
+    comments.includes(:author).each do |comment|
       results[comment.parent_comment_id] += [comment]
     end
     results

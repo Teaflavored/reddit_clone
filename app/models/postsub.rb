@@ -14,6 +14,5 @@ class Postsub < ActiveRecord::Base
   
   belongs_to :post, inverse_of: :postsubs
   belongs_to :sub, inverse_of: :postsubs
-  
  
 end

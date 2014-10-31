@@ -18,8 +18,8 @@ class SubsController < ApplicationController
   end
   
   def create
-    @sub = Sub.new(sub_params)
-    @sub.moderator = current_user
+    @sub = current_user.subs.new(sub_params)
+    # @sub.moderator = current_user
     if @sub.save
       redirect_to sub_url(@sub)
     else
