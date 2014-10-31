@@ -2,22 +2,24 @@
 
 <h2>Body of comment</h2>
 <p><%= @comment.content %></p>
-
+<% if current_user %>
 <h2>Make a comment to this comment!</h2>
-<form action="<%= comments_url %>"
-      method="POST">
- <input type="hidden"
-        name="authenticity_token"
-        value="<%= form_authenticity_token %>">
- <label for="comment_content">Content</label>
- <textarea name="comment[content]"
-           id="comment_content"></textarea>
- <input type="hidden"
-        name="comment[parent_comment_id]"
-        value="<%= @comment.id %>">
- <input type="hidden"
-        name="comment[post_id]"
-        value="<%= @comment.post_id %>">
+  <form action="<%= comments_url %>"
+        method="POST">
+   <input type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+   <label for="comment_content">Content</label>
+   <textarea name="comment[content]"
+             id="comment_content"></textarea>
+   <input type="hidden"
+          name="comment[parent_comment_id]"
+          value="<%= @comment.id %>">
+   <input type="hidden"
+          name="comment[post_id]"
+          value="<%= @comment.post_id %>">
  
- <input type="submit" value="create comment!">
-</form>
+   <input type="submit" value="create comment!">
+  </form>
+<% end %>
+<%= link_to "Back to post #{@comment.post.title}", post_url(@comment.post) %>

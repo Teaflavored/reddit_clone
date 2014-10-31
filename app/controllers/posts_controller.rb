@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :redirect_unless_post_belongs_to_current_user, only: [:edit, :update]
+  before_action :redirect_if_not_logged_in, only: [:new, :create]
+  
   def new
     @post = Post.new
     @subs = Sub.all

@@ -1,6 +1,6 @@
 class SubsController < ApplicationController
   before_action :redirect_unless_moderator_is_editing, only: [:edit, :update]
-  
+  before_action :redirect_if_not_logged_in, only: [:new, :create]
   def index
     @subs = Sub.all
     render :index
