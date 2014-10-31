@@ -1,0 +1,39 @@
+<form action="<%= action_url %>"
+      method="POST">
+  <%= render "layouts/authenticity" %>
+  
+  <% if action == "PATCH" %>
+    <input type= "hidden", name= "_method" value= "PATCH">
+  <% end %>
+  
+  <label for"post_title">Title</label>
+  <input type="text"
+         name="post[title]"
+         value="<%= post.title %>"
+         id="post_title">
+  <br>
+  
+  <label for"post_url">url</label>
+  <input type="text"
+         name="post[url]"
+         value="<%= post.url %>"
+         id="post_url">
+  <br>
+  
+  <label for"post_content">Content</label>
+  <textarea name="post[content]"
+            id="post_content"><%= post.content %></textarea>
+  <br>
+  
+  <% subs.each do |sub| %>
+    <label for="post_sub_<%= sub.title %>"><%= sub.title %></label>
+    <input type="checkbox"
+           name="post[sub_ids][]"
+           id="post_sub_<%= sub.title %>"
+           value="<%= sub.id %>"
+           <%= "checked" if @post.subs.include?(sub) %>
+           >
+  <% end %>
+  
+  <input type="submit" value="<%= submit_msg %>">
+</form>

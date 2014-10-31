@@ -1,0 +1,24 @@
+<form action="<%= action_url %>"
+      method="POST">
+      
+  <% if action == "PATCH" %>
+    <input type="hidden"
+           name="_method"
+           value="PATCH">
+  <% end %>
+  <%= render "layouts/authenticity" %>
+  
+  <label for"sub_title">Title</label>
+  <input type="text"
+         name="sub[title]"
+         value="<%= sub.title %>"
+         id="sub_title">
+  <br>
+  
+  <label for"sub_description">Description</label>
+  <textarea
+         name="sub[description]"
+         id="sub_description" ><%= sub.description%></textarea>
+  <br>
+  <input type="submit" value="<%= submit_msg %>">
+</form>

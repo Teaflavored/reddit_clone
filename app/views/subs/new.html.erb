@@ -1,0 +1,11 @@
+<h1>Create Sub</h1>
+
+<% action_url = subs_url %>
+<% action = "POST" %>
+<% submit_msg = "Create Sub" %>
+
+<%= render "subform", 
+    action_url: action_url,
+    action: action,
+    submit_msg: submit_msg,
+    sub: @sub %>

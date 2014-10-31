@@ -1,0 +1,14 @@
+<h1><%= @post.title %> By: <%= @post.author.username %> </h1>
+<%= link_to('Edit Post', edit_post_url)%>
+<br>
+
+
+<h2>All subs this post can be found in</h2>
+<% if @subs %>
+  <ul>
+    <% @subs.each do |sub| %>
+      <li><%= sub.title %></li>
+    <% end %>
+  </ul>
+  
+<% end %>

@@ -1,0 +1,13 @@
+<h1>Edit Sub</h1>
+
+<% action_url = sub_url(@sub) %>
+<% action = "PATCH" %>
+<% submit_msg = "Edit Sub" %>
+
+<%= render "subform", 
+    action_url: action_url,
+    action: action,
+    submit_msg: submit_msg,
+    sub: @sub %>
+    
+<br>

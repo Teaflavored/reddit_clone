@@ -1,0 +1,10 @@
+<h1>Edit post</h1>
+<% action_url = post_url(@post) %>
+<% submit_msg = "Edit Post"%>
+<%= render "postform",
+    post: @post,
+    action_url: action_url,
+    submit_msg: submit_msg,
+    action:"PATCH",
+    subs: @subs 
+    %>
