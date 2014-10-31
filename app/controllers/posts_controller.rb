@@ -39,9 +39,10 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @subs = @post.subs
-    @all_comments = @post.comments
+    @all_comments = @post.comments_by_parent_id
     render :show
   end
+
   
   private
   

@@ -39,4 +39,11 @@ class Post < ActiveRecord::Base
     
   has_many :comments
   
+  def comments_by_parent_id
+    results = Hash.new([])
+    comments.each do |comment|
+      results[comment.parent_comment_id] += [comment]
+    end
+    results
+  end
 end
