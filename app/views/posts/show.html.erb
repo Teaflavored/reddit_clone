@@ -15,11 +15,7 @@
 <h2>All the comments</h2>
 <% if @comments %>
   <ul>
-    <% @comments.each do |comment| %>
-      <li><%= comment.content %>
-          Posted by: <%= comment.author.username%>
-      </li>
-    <% end %>
+    <%= render @comments, collection: @comments %>
   </ul>
 <% end %>
 <%= link_to "Create new comment", new_post_comment_url(@post) %>

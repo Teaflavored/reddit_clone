@@ -16,7 +16,14 @@ class Post < ActiveRecord::Base
   
   has_many :postsubs, inverse_of: :post
   
-  has_many :comments
+  has_many(
+    :top_level_comments,
+    -> { where('comments.parent_comment_id IS NULL') },
+    class_name: "Comment",
+    foreign_key: :post_id,
+    primary_key: :id
+
+    )
   
   has_many(
     :subs,
@@ -30,5 +37,6 @@ class Post < ActiveRecord::Base
     primary_key: :id
   )
     
+  has_many :comments
   
 end

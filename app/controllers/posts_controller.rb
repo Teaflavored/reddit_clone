@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @subs = @post.subs
-    @comments = @post.comments
+    @comments = @post.top_level_comments
     render :show
   end
   
