@@ -16,6 +16,8 @@ class Post < ActiveRecord::Base
   
   has_many :postsubs, inverse_of: :post
   
+  has_many :comments
+  
   has_many(
     :subs,
     through: :postsubs,

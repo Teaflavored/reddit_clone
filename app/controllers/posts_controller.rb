@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :redirect_unless_post_belongs_to_current_user, only: [:edit, :update]
   def new
     @post = Post.new
     @subs = Sub.all
@@ -38,6 +39,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @subs = @post.subs
+    @comments = @post.comments
     render :show
   end
   
@@ -45,5 +47,10 @@ class PostsController < ApplicationController
   
   def post_params
     params.require(:post).permit(:title, :content, :url, sub_ids: [] )
+  end
+  
+  def redirect_unless_post_belongs_to_current_user
+    post = Post.find(params[:id])
+    redirect_to user_url(current_user) unless post.author == current_user
   end
 end
