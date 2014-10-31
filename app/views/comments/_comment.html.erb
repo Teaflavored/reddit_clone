@@ -1,7 +1,5 @@
-<li><%= comment.content %><%= link_to "link to #{comment.content}",comment_url(comment) %></li>
-<% if comment.child_comments.length > 0%>
-  <ul><% comment.child_comments.each do |child_comment| %>
-      <%= render "comments/comment", comment: child_comment %>
+<li><%= comment.content %><%= link_to "link to #{comment.content}",comment_url(comment) %><%= comment.author.username %><% comment.created_at %></li>
+  <ul><% all_comments.each do |child_comment| %>
+      <%= render "comments/comment", comment: child_comment, all_comments: all_comments if child_comment.parent_comment_id == comment.id %>
       <% end %>
   </ul>
-<% end %>

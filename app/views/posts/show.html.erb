@@ -13,9 +13,13 @@
 <% end %>
 
 <h2>All the comments</h2>
-<% if @comments %>
+<% if @all_comments %>
   <ul>
-    <%= render @comments, collection: @comments %>
+    <% @all_comments.each do |comment|%>
+    <% if !comment.parent_comment_id %>
+      <%= render "comments/comment", all_comments: @all_comments, comment: comment %>
+      <% end %>
+    <% end %>
   </ul>
 <% end %>
 <%= link_to "Create new comment", new_post_comment_url(@post) %>
