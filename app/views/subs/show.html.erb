@@ -7,7 +7,14 @@
 <h2>Posts</h2>
 <ul>
   <% @posts.each do |post|%>
-    <li><%= link_to post.title, post_url(post) %></li>
+    <li>
+      <div>
+        <%= link_to post.title, post_url(post) %>
+        <%= link_to 'Upvote', post_upvote_url(post) %>
+        <%= link_to 'Downvote', post_downvote_url(post) %>
+        Score: <%= post.sum %>
+      </div>
+    </li>
   <% end %>
 </ul>
 <br>

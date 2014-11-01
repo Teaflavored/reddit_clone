@@ -1,7 +1,17 @@
 <li>
-  <%= comment.content %>
-  <%= link_to "link to #{comment.content}",comment_url(comment) %>
-  <%= comment.author.username %><%= comment.created_at %>
+  <div>
+    <%= comment.content %>
+    <br>
+    <%= link_to "link to #{comment.content}",comment_url(comment) %>
+     <br>
+    <%= comment.author.username %><%= comment.created_at %>
+     <br>Score: <%= comment.sum %>
+     <br>
+    <%= link_to "upvote",comment_upvote_url(comment) %>
+     <br>
+    <%= link_to "downvote",comment_downvote_url(comment) %>
+     <br>
+  </div>
 </li>
 <ul>
   <% all_comments[comment.id].each do |child_comment| %>

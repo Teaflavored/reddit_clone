@@ -12,6 +12,8 @@
 #
 
 class Post < ActiveRecord::Base
+  include Voteable
+  
   validates :title, :url, :author, presence: true
   
   has_many :postsubs, inverse_of: :post
@@ -40,9 +42,13 @@ class Post < ActiveRecord::Base
   
   def comments_by_parent_id
     results = Hash.new([])
-    comments.includes(:author).each do |comment|
+    comments.order_by_score.includes(:author).each do |comment|
       results[comment.parent_comment_id] += [comment]
     end
     results
   end
+  
+ 
+  
+  
 end

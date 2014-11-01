@@ -12,6 +12,7 @@
 #
 
 class Comment < ActiveRecord::Base
+  include Voteable
   validates :content, :author, :post, presence: true
   
   belongs_to(
@@ -36,4 +37,5 @@ class Comment < ActiveRecord::Base
     foreign_key: :parent_comment_id,
     primary_key: :id 
   )
+
 end

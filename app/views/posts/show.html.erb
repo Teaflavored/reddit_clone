@@ -9,7 +9,7 @@
 <% if @subs %>
   <ul>
     <% @subs.each do |sub| %>
-      <li><%= sub.title %></li>
+      <li><%= link_to sub.title, sub_url(sub) %></li>
     <% end %>
   </ul>
 <% end %>

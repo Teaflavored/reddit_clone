@@ -19,6 +19,18 @@ class CommentsController < ApplicationController
     end
   end
   
+  def upvote
+    @comment = Comment.find(params[:comment_id])
+    @comment.votes.create(value: 1)
+    redirect_to post_url(@comment.post)
+  end
+  
+  def downvote
+    @comment = Comment.find(params[:comment_id])
+    @comment.votes.create(value: -1)
+    redirect_to post_url(@comment.post)
+  end
+  
   def show
     @comment = Comment.find(params[:id])
     render :show
