@@ -21,13 +21,13 @@ class CommentsController < ApplicationController
   
   def upvote
     @comment = Comment.find(params[:comment_id])
-    @comment.votes.create(value: 1)
+    @comment.votes.create(value: 1, voter: current_user )
     redirect_to post_url(@comment.post)
   end
   
   def downvote
     @comment = Comment.find(params[:comment_id])
-    @comment.votes.create(value: -1)
+    @comment.votes.create(value: -1, voter: current_user )
     redirect_to post_url(@comment.post)
   end
   

@@ -40,13 +40,13 @@ class PostsController < ApplicationController
   
   def upvote
     @post = Post.find(params[:post_id])
-    @post.votes.create(value: 1)
+    @post.votes.create(value: 1, voter: current_user )
     redirect_to post_url(@post)
   end
   
   def downvote
     @post = Post.find(params[:post_id])
-    @post.votes.create(value: -1)
+    @post.votes.create(value: -1, voter: current_user )
     redirect_to post_url(@post)
   end
   
